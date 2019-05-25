@@ -41,18 +41,18 @@ void convertToBus(SL_Bus_obstacleStopper_geometry_msgs_Vector3* busPtr, geometry
 }
 
 
-// Conversions between SL_Bus_obstacleStopper_std_msgs_Float32 and std_msgs::Float32
+// Conversions between SL_Bus_obstacleStopper_std_msgs_Float64 and std_msgs::Float64
 
-void convertFromBus(std_msgs::Float32* msgPtr, SL_Bus_obstacleStopper_std_msgs_Float32 const* busPtr)
+void convertFromBus(std_msgs::Float64* msgPtr, SL_Bus_obstacleStopper_std_msgs_Float64 const* busPtr)
 {
-  const std::string rosMessageType("std_msgs/Float32");
+  const std::string rosMessageType("std_msgs/Float64");
 
   msgPtr->data =  busPtr->Data;
 }
 
-void convertToBus(SL_Bus_obstacleStopper_std_msgs_Float32* busPtr, std_msgs::Float32 const* msgPtr)
+void convertToBus(SL_Bus_obstacleStopper_std_msgs_Float64* busPtr, std_msgs::Float64 const* msgPtr)
 {
-  const std::string rosMessageType("std_msgs/Float32");
+  const std::string rosMessageType("std_msgs/Float64");
 
   busPtr->Data =  msgPtr->data;
 }

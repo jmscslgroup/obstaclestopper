@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'obstacleStopper'.
 //
-// Model version                  : 1.8
-// Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Jan 27 11:14:49 2017
+// Model version                  : 1.86
+// Simulink Coder version         : 9.0 (R2018b) 24-May-2018
+// C/C++ source code generated on : Fri May 24 15:32:42 2019
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -27,6 +27,9 @@
 #endif                                 // obstacleStopper_COMMON_INCLUDES_
 
 #include "obstacleStopper_types.h"
+#include "rtGetNaN.h"
+#include "rt_nonfinite.h"
+#include "rtGetInf.h"
 
 // Macros for accessing real-time model data structure
 #ifndef rtmGetErrorStatus
@@ -37,27 +40,31 @@
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
 #endif
 
-// Block signals (auto storage)
+// Block signals (default storage)
 typedef struct {
-  SL_Bus_obstacleStopper_geometry_msgs_Twist In1;// '<S9>/In1'
+  SL_Bus_obstacleStopper_geometry_msgs_Twist In1;// '<S13>/In1'
+  SL_Bus_obstacleStopper_geometry_msgs_Twist In1_l;// '<S12>/In1'
   SL_Bus_obstacleStopper_geometry_msgs_Twist BusAssignment;// '<Root>/Bus Assignment' 
-  char_T cv0[35];
-  SL_Bus_obstacleStopper_std_msgs_Float32 In1_d;// '<S8>/In1'
+  char_T cv0[36];
+  real_T vOut;                         // '<S4>/Stateflow block for slowing dow or accelerating vehicles at high speed in case of obstacle avoidance' 
+  SL_Bus_obstacleStopper_std_msgs_Float64 In1_d;// '<S11>/In1'
 } B_obstacleStopper_T;
 
-// Block states (auto storage) for system '<Root>'
+// Block states (default storage) for system '<Root>'
 typedef struct {
+  robotics_slros_internal_block_T obj; // '<S5>/SinkBlock'
+  robotics_slros_internal_blo_f_T obj_k;// '<S8>/SourceBlock'
+  robotics_slros_internal_blo_f_T obj_l;// '<S7>/SourceBlock'
+  robotics_slros_internal_blo_f_T obj_e;// '<S6>/SourceBlock'
+  real_T count;                        // '<S4>/Stateflow block for slowing dow or accelerating vehicles at high speed in case of obstacle avoidance' 
+  real_T distance;                     // '<S4>/Stateflow block for slowing dow or accelerating vehicles at high speed in case of obstacle avoidance' 
   real_T sinceLastMsg;                 // '<S2>/timeout set to 0 output'
-  void *SourceBlock_PWORK;             // '<S6>/SourceBlock'
-  void *SourceBlock_PWORK_b;           // '<S5>/SourceBlock'
-  void *SinkBlock_PWORK;               // '<S4>/SinkBlock'
-  robotics_slros_internal_block_T obj; // '<S4>/SinkBlock'
-  robotics_slros_internal_blo_f_T obj_l;// '<S6>/SourceBlock'
-  robotics_slros_internal_blo_f_T obj_e;// '<S5>/SourceBlock'
+  uint8_T is_active_c1_obstacleStopper;// '<S4>/Stateflow block for slowing dow or accelerating vehicles at high speed in case of obstacle avoidance' 
+  uint8_T is_c1_obstacleStopper;       // '<S4>/Stateflow block for slowing dow or accelerating vehicles at high speed in case of obstacle avoidance' 
   boolean_T sinceLastMsg_not_empty;    // '<S2>/timeout set to 0 output'
 } DW_obstacleStopper_T;
 
-// Parameters (auto storage)
+// Parameters (default storage)
 struct P_obstacleStopper_T_ {
   real_T DeadMansSwitch_stepSize;      // Mask Parameter: DeadMansSwitch_stepSize
                                        //  Referenced by: '<S2>/Simulate step size'
@@ -66,13 +73,25 @@ struct P_obstacleStopper_T_ {
                                        //  Referenced by: '<S2>/Timeout in seconds'
 
   SL_Bus_obstacleStopper_geometry_msgs_Twist Out1_Y0;// Computed Parameter: Out1_Y0
-                                                     //  Referenced by: '<S9>/Out1'
+                                                     //  Referenced by: '<S12>/Out1'
 
   SL_Bus_obstacleStopper_geometry_msgs_Twist Constant_Value;// Computed Parameter: Constant_Value
-                                                            //  Referenced by: '<S6>/Constant'
+                                                            //  Referenced by: '<S7>/Constant'
+
+  SL_Bus_obstacleStopper_geometry_msgs_Twist Out1_Y0_d;// Computed Parameter: Out1_Y0_d
+                                                       //  Referenced by: '<S13>/Out1'
+
+  SL_Bus_obstacleStopper_geometry_msgs_Twist Constant_Value_p;// Computed Parameter: Constant_Value_p
+                                                              //  Referenced by: '<S8>/Constant'
 
   SL_Bus_obstacleStopper_geometry_msgs_Twist Constant_Value_h;// Computed Parameter: Constant_Value_h
                                                               //  Referenced by: '<S1>/Constant'
+
+  SL_Bus_obstacleStopper_std_msgs_Float64 Out1_Y0_h;// Computed Parameter: Out1_Y0_h
+                                                    //  Referenced by: '<S11>/Out1'
+
+  SL_Bus_obstacleStopper_std_msgs_Float64 Constant_Value_o;// Computed Parameter: Constant_Value_o
+                                                           //  Referenced by: '<S6>/Constant'
 
   real_T Constant_Value_e;             // Expression: 5
                                        //  Referenced by: '<S3>/Constant'
@@ -83,11 +102,11 @@ struct P_obstacleStopper_T_ {
   real_T Saturation_LowerSat;          // Expression: 0
                                        //  Referenced by: '<S3>/Saturation'
 
-  SL_Bus_obstacleStopper_std_msgs_Float32 Out1_Y0_h;// Computed Parameter: Out1_Y0_h
-                                                    //  Referenced by: '<S8>/Out1'
+  real_T SampleTimeinSeconds_Value;    // Expression: 1/20
+                                       //  Referenced by: '<S4>/Sample Time in Seconds'
 
-  SL_Bus_obstacleStopper_std_msgs_Float32 Constant_Value_o;// Computed Parameter: Constant_Value_o
-                                                           //  Referenced by: '<S5>/Constant'
+  real_T GainSafeDistanceAtHighSpeedfoll;// Expression: 3
+                                         //  Referenced by: '<S4>/Gain: Safe Distance At HighSpeed follows 3 second rules'
 
 };
 
@@ -96,7 +115,7 @@ struct tag_RTM_obstacleStopper_T {
   const char_T *errorStatus;
 };
 
-// Block parameters (auto storage)
+// Block parameters (default storage)
 #ifdef __cplusplus
 
 extern "C" {
@@ -110,22 +129,11 @@ extern "C" {
 }
 #endif
 
-// Block signals (auto storage)
+// Block signals (default storage)
 extern B_obstacleStopper_T obstacleStopper_B;
 
-// Block states (auto storage)
+// Block states (default storage)
 extern DW_obstacleStopper_T obstacleStopper_DW;
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
-#ifdef __cplusplus
-
-}
-#endif
 
 #ifdef __cplusplus
 
@@ -158,6 +166,12 @@ extern "C" {
 #endif
 
 //-
+//  These blocks were eliminated from the model due to optimizations:
+//
+//  Block '<Root>/Scope' : Unused code path elimination
+
+
+//-
 //  The generated code includes comments that allow you to trace directly
 //  back to the appropriate location in the model.  The basic format
 //  is <system>/block_name, where system is the system number (uniquely
@@ -175,12 +189,16 @@ extern "C" {
 //  '<S1>'   : 'obstacleStopper/Blank Message'
 //  '<S2>'   : 'obstacleStopper/Dead Man's Switch'
 //  '<S3>'   : 'obstacleStopper/Obstacle Stopper'
-//  '<S4>'   : 'obstacleStopper/Publish'
-//  '<S5>'   : 'obstacleStopper/Subscribe'
-//  '<S6>'   : 'obstacleStopper/Subscribe1'
-//  '<S7>'   : 'obstacleStopper/Dead Man's Switch/timeout set to 0 output'
-//  '<S8>'   : 'obstacleStopper/Subscribe/Enabled Subsystem'
-//  '<S9>'   : 'obstacleStopper/Subscribe1/Enabled Subsystem'
+//  '<S4>'   : 'obstacleStopper/ObstacleStopper V2.0'
+//  '<S5>'   : 'obstacleStopper/Publish'
+//  '<S6>'   : 'obstacleStopper/Subscribe'
+//  '<S7>'   : 'obstacleStopper/Subscribe1'
+//  '<S8>'   : 'obstacleStopper/Subscribe2'
+//  '<S9>'   : 'obstacleStopper/Dead Man's Switch/timeout set to 0 output'
+//  '<S10>'  : 'obstacleStopper/ObstacleStopper V2.0/Stateflow block for slowing dow or accelerating vehicles at high speed in case of obstacle avoidance'
+//  '<S11>'  : 'obstacleStopper/Subscribe/Enabled Subsystem'
+//  '<S12>'  : 'obstacleStopper/Subscribe1/Enabled Subsystem'
+//  '<S13>'  : 'obstacleStopper/Subscribe2/Enabled Subsystem'
 
 #endif                                 // RTW_HEADER_obstacleStopper_h_
 

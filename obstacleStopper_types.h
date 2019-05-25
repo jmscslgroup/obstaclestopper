@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'obstacleStopper'.
 //
-// Model version                  : 1.8
-// Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Jan 27 11:14:49 2017
+// Model version                  : 1.86
+// Simulink Coder version         : 9.0 (R2018b) 24-May-2018
+// C/C++ source code generated on : Fri May 24 15:32:42 2019
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -45,89 +45,39 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_obstacleStopper_std_msgs_Float32_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_obstacleStopper_std_msgs_Float32_
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_obstacleStopper_std_msgs_Float64_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_obstacleStopper_std_msgs_Float64_
 
-// MsgType=std_msgs/Float32
+// MsgType=std_msgs/Float64
 typedef struct {
-  real32_T Data;
-} SL_Bus_obstacleStopper_std_msgs_Float32;
+  real_T Data;
+} SL_Bus_obstacleStopper_std_msgs_Float64;
 
 #endif
-
-#ifndef struct_tag_saG5948SFTrUFnIbVUb0TZH
-#define struct_tag_saG5948SFTrUFnIbVUb0TZH
-
-struct tag_saG5948SFTrUFnIbVUb0TZH
-{
-  int32_T isInitialized;
-};
-
-#endif                                 //struct_tag_saG5948SFTrUFnIbVUb0TZH
 
 #ifndef typedef_robotics_slros_internal_block_T
 #define typedef_robotics_slros_internal_block_T
 
-typedef struct tag_saG5948SFTrUFnIbVUb0TZH robotics_slros_internal_block_T;
+typedef struct {
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+} robotics_slros_internal_block_T;
 
 #endif                                 //typedef_robotics_slros_internal_block_T
-
-#ifndef struct_tag_saG5948SFTrUFnIbVUb0TZH
-#define struct_tag_saG5948SFTrUFnIbVUb0TZH
-
-struct tag_saG5948SFTrUFnIbVUb0TZH
-{
-  int32_T isInitialized;
-};
-
-#endif                                 //struct_tag_saG5948SFTrUFnIbVUb0TZH
 
 #ifndef typedef_robotics_slros_internal_blo_f_T
 #define typedef_robotics_slros_internal_blo_f_T
 
-typedef struct tag_saG5948SFTrUFnIbVUb0TZH robotics_slros_internal_blo_f_T;
+typedef struct {
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+} robotics_slros_internal_blo_f_T;
 
 #endif                                 //typedef_robotics_slros_internal_blo_f_T
 
-#ifndef typedef_struct_T_obstacleStopper_T
-#define typedef_struct_T_obstacleStopper_T
-
-typedef struct {
-  char_T f0[4];
-} struct_T_obstacleStopper_T;
-
-#endif                                 //typedef_struct_T_obstacleStopper_T
-
-#ifndef typedef_struct_T_obstacleStopper_f_T
-#define typedef_struct_T_obstacleStopper_f_T
-
-typedef struct {
-  char_T f0[8];
-} struct_T_obstacleStopper_f_T;
-
-#endif                                 //typedef_struct_T_obstacleStopper_f_T
-
-#ifndef typedef_struct_T_obstacleStopper_ft_T
-#define typedef_struct_T_obstacleStopper_ft_T
-
-typedef struct {
-  char_T f0[7];
-} struct_T_obstacleStopper_ft_T;
-
-#endif                                 //typedef_struct_T_obstacleStopper_ft_T
-
-#ifndef typedef_struct_T_obstacleStopper_fto_T
-#define typedef_struct_T_obstacleStopper_fto_T
-
-typedef struct {
-  char_T f0[8];
-  char_T f1[7];
-  char_T f2[6];
-} struct_T_obstacleStopper_fto_T;
-
-#endif                                 //typedef_struct_T_obstacleStopper_fto_T
-
-// Parameters (auto storage)
+// Parameters (default storage)
 typedef struct P_obstacleStopper_T_ P_obstacleStopper_T;
 
 // Forward declaration for rtModel

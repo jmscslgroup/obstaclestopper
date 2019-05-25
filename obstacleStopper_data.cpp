@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'obstacleStopper'.
 //
-// Model version                  : 1.8
-// Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Jan 27 11:14:49 2017
+// Model version                  : 1.86
+// Simulink Coder version         : 9.0 (R2018b) 24-May-2018
+// C/C++ source code generated on : Fri May 24 15:32:42 2019
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -19,30 +19,20 @@
 #include "obstacleStopper.h"
 #include "obstacleStopper_private.h"
 
-// Block parameters (auto storage)
+// Block parameters (default storage)
 P_obstacleStopper_T obstacleStopper_P = {
-  0.02,                                // Mask Parameter: DeadMansSwitch_stepSize
-                                       //  Referenced by: '<S2>/Simulate step size'
+  // Mask Parameter: DeadMansSwitch_stepSize
+  //  Referenced by: '<S2>/Simulate step size'
 
-  0.2,                                 // Mask Parameter: DeadMansSwitch_timeout
-                                       //  Referenced by: '<S2>/Timeout in seconds'
+  0.02,
 
+  // Mask Parameter: DeadMansSwitch_timeout
+  //  Referenced by: '<S2>/Timeout in seconds'
 
-  {
-    {
-      0.0,                             // X
-      0.0,                             // Y
-      0.0                              // Z
-    },                                 // Linear
+  0.2,
 
-    {
-      0.0,                             // X
-      0.0,                             // Y
-      0.0                              // Z
-    }                                  // Angular
-  },                                   // Computed Parameter: Out1_Y0
-                                       //  Referenced by: '<S9>/Out1'
-
+  // Computed Parameter: Out1_Y0
+  //  Referenced by: '<S12>/Out1'
 
   {
     {
@@ -56,9 +46,10 @@ P_obstacleStopper_T obstacleStopper_P = {
       0.0,                             // Y
       0.0                              // Z
     }                                  // Angular
-  },                                   // Computed Parameter: Constant_Value
-                                       //  Referenced by: '<S6>/Constant'
+  },
 
+  // Computed Parameter: Constant_Value
+  //  Referenced by: '<S7>/Constant'
 
   {
     {
@@ -72,30 +63,97 @@ P_obstacleStopper_T obstacleStopper_P = {
       0.0,                             // Y
       0.0                              // Z
     }                                  // Angular
-  },                                   // Computed Parameter: Constant_Value_h
-                                       //  Referenced by: '<S1>/Constant'
+  },
 
-  5.0,                                 // Expression: 5
-                                       //  Referenced by: '<S3>/Constant'
-
-  1.0,                                 // Expression: 1
-                                       //  Referenced by: '<S3>/Saturation'
-
-  0.0,                                 // Expression: 0
-                                       //  Referenced by: '<S3>/Saturation'
-
+  // Computed Parameter: Out1_Y0_d
+  //  Referenced by: '<S13>/Out1'
 
   {
-    0.0F                               // Data
-  },                                   // Computed Parameter: Out1_Y0_h
-                                       //  Referenced by: '<S8>/Out1'
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    },                                 // Linear
 
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    }                                  // Angular
+  },
+
+  // Computed Parameter: Constant_Value_p
+  //  Referenced by: '<S8>/Constant'
 
   {
-    0.0F                               // Data
-  }                                    // Computed Parameter: Constant_Value_o
-                                       //  Referenced by: '<S5>/Constant'
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    },                                 // Linear
 
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    }                                  // Angular
+  },
+
+  // Computed Parameter: Constant_Value_h
+  //  Referenced by: '<S1>/Constant'
+
+  {
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    },                                 // Linear
+
+    {
+      0.0,                             // X
+      0.0,                             // Y
+      0.0                              // Z
+    }                                  // Angular
+  },
+
+  // Computed Parameter: Out1_Y0_h
+  //  Referenced by: '<S11>/Out1'
+
+  {
+    0.0                                // Data
+  },
+
+  // Computed Parameter: Constant_Value_o
+  //  Referenced by: '<S6>/Constant'
+
+  {
+    0.0                                // Data
+  },
+
+  // Expression: 5
+  //  Referenced by: '<S3>/Constant'
+
+  5.0,
+
+  // Expression: 1
+  //  Referenced by: '<S3>/Saturation'
+
+  1.0,
+
+  // Expression: 0
+  //  Referenced by: '<S3>/Saturation'
+
+  0.0,
+
+  // Expression: 1/20
+  //  Referenced by: '<S4>/Sample Time in Seconds'
+
+  0.05,
+
+  // Expression: 3
+  //  Referenced by: '<S4>/Gain: Safe Distance At HighSpeed follows 3 second rules'
+
+  3.0
 };
 
 //

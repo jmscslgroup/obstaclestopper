@@ -7,9 +7,9 @@
 //
 // Code generated for Simulink model 'obstacleStopper'.
 //
-// Model version                  : 1.8
-// Simulink Coder version         : 8.10 (R2016a) 10-Feb-2016
-// C/C++ source code generated on : Fri Jan 27 11:14:49 2017
+// Model version                  : 1.86
+// Simulink Coder version         : 9.0 (R2018b) 24-May-2018
+// C/C++ source code generated on : Fri May 24 15:32:42 2019
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
